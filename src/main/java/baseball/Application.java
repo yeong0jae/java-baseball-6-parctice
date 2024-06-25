@@ -24,6 +24,8 @@ public class Application {
         String computerString = sb.toString();
         System.out.println(computerString);
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
         baseball(computerString);
 
         while (true) {
@@ -46,6 +48,7 @@ public class Application {
                 System.out.println(computerString);
 
                 baseball(computerString);
+                
             } else if (restartInput.equals("2")) {
                 System.out.println("게임 종료");
                 break;
@@ -55,7 +58,6 @@ public class Application {
 
     private static void baseball(String computerString) {
         while (true) {
-            System.out.println("숫자 야구 게임을 시작합니다.");
             System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
             if (input.equals(computerString)) {
