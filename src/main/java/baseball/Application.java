@@ -26,10 +26,39 @@ public class Application {
         String computerString = sb.toString();
         System.out.println(computerString);
 
-        // 사용자의 세자리 수 입력
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.print("숫자를 입력해주세요 : ");
+        baseball(computerString);
+
         while(true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String restartInput = Console.readLine();
+            if (restartInput.equals("1")) {
+                // 컴퓨터가 세자리 수 선택
+                computer = new ArrayList<>();
+                while (computer.size() < 3) {
+                    int randomNumber = Randoms.pickNumberInRange(1, 9);
+                    if (!computer.contains(randomNumber)) {
+                        computer.add(randomNumber);
+                    }
+                }
+                sb = new StringBuilder();
+                for (int number: computer) {
+                    sb.append(number);
+                }
+                computerString = sb.toString();
+                System.out.println(computerString);
+
+                baseball(computerString);
+            } else if (restartInput.equals("2")) {
+                System.out.println("게임 종료");
+                break;
+            }
+        }
+    }
+
+    private static void baseball(String computerString) {
+        while(true) {
+            System.out.println("숫자 야구 게임을 시작합니다.");
+            System.out.print("숫자를 입력해주세요 : ");
             String input = Console.readLine();
             if (input.equals(computerString)) {
                 System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
@@ -48,14 +77,14 @@ public class Application {
             if (input.charAt(1) == computerString.charAt(1)) {
                 strikeCount += 1;
             }
-            if (input.charAt(1) == computerString.charAt(0) || input.charAt(1) == computerString.charAt(2)){
+            if (input.charAt(1) == computerString.charAt(0) || input.charAt(1) == computerString.charAt(2)) {
                 ballCount += 1;
             }
             // 세 번째 수 스트라이크, 볼 판단
             if (input.charAt(2) == computerString.charAt(2)) {
                 strikeCount += 1;
             }
-            if (input.charAt(2) == computerString.charAt(0) || input.charAt(2) == computerString.charAt(1)){
+            if (input.charAt(2) == computerString.charAt(0) || input.charAt(2) == computerString.charAt(1)) {
                 ballCount += 1;
             }
             // 스트라이크, 볼 출력
@@ -70,4 +99,6 @@ public class Application {
             }
         }
     }
+
+
 }
