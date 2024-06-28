@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class BaseBall {
 
-    public void start(Output output) {
+    public void start() {
 
         RandomBall randomBall = new RandomBall();
         String randomNumber = randomBall.generate();
@@ -12,16 +12,16 @@ public class BaseBall {
         System.out.println(randomNumber);
 
         BaseBall baseBall = new BaseBall();
-        baseBall.play(randomNumber, output);
+        baseBall.play(randomNumber);
 
         while (true) {
-            output.printRestartMessage();
+            Output.printRestartMessage();
             String restartInput = Console.readLine();
             if (restartInput.equals("1")) {
                 randomNumber = randomBall.generate();
                 System.out.println(randomNumber);
 
-                baseBall.play(randomNumber, output);
+                baseBall.play(randomNumber);
 
             } else if (restartInput.equals("2")) {
                 break;
@@ -29,14 +29,14 @@ public class BaseBall {
         }
     }
 
-    private void play(String randomNumber, Output output) {
+    private void play(String randomNumber) {
         while (true) {
 
             Input input = new Input();
             String userInput = input.readNumber();
-            
+
             if (userInput.equals(randomNumber)) {
-                output.printEndMessage();
+                Output.printEndMessage();
                 break;
             }
             int ballCount = 0;
@@ -64,13 +64,13 @@ public class BaseBall {
             }
             // 스트라이크, 볼 출력
             if (strikeCount == 0 && ballCount == 0) {
-                output.printNothingMessage();
+                Output.printNothingMessage();
             } else if (strikeCount == 0) {
-                output.printBallCount(ballCount);
+                Output.printBallCount(ballCount);
             } else if (ballCount == 0) {
-                output.printStrikeCount(strikeCount);
+                Output.printStrikeCount(strikeCount);
             } else {
-                output.printBallAndStrikeCount(ballCount, strikeCount);
+                Output.printBallAndStrikeCount(ballCount, strikeCount);
             }
         }
     }
