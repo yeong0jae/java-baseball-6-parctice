@@ -8,6 +8,30 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
 
+        System.out.println("숫자 야구 게임을 시작합니다.");
+
+        String computerString = randomNumber();
+        System.out.println(computerString);
+
+        baseball(computerString);
+
+        while (true) {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            String restartInput = Console.readLine();
+            if (restartInput.equals("1")) {
+                computerString = randomNumber();
+                System.out.println(computerString);
+
+                baseball(computerString);
+
+            } else if (restartInput.equals("2")) {
+                System.out.println("게임 종료");
+                break;
+            }
+        }
+    }
+
+    private static String randomNumber() {
         // 컴퓨터가 세자리 수 선택
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
@@ -21,39 +45,7 @@ public class Application {
         for (int number : computer) {
             sb.append(number);
         }
-        String computerString = sb.toString();
-        System.out.println(computerString);
-
-        System.out.println("숫자 야구 게임을 시작합니다.");
-
-        baseball(computerString);
-
-        while (true) {
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            String restartInput = Console.readLine();
-            if (restartInput.equals("1")) {
-                // 컴퓨터가 세자리 수 선택
-                computer = new ArrayList<>();
-                while (computer.size() < 3) {
-                    int randomNumber = Randoms.pickNumberInRange(1, 9);
-                    if (!computer.contains(randomNumber)) {
-                        computer.add(randomNumber);
-                    }
-                }
-                sb = new StringBuilder();
-                for (int number : computer) {
-                    sb.append(number);
-                }
-                computerString = sb.toString();
-                System.out.println(computerString);
-
-                baseball(computerString);
-                
-            } else if (restartInput.equals("2")) {
-                System.out.println("게임 종료");
-                break;
-            }
-        }
+        return sb.toString();
     }
 
     private static void baseball(String computerString) {
