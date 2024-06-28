@@ -5,7 +5,7 @@ public class BaseBall {
     public void start() {
 
         RandomBall randomBall = new RandomBall();
-        String randomNumber = randomBall.generate();
+        String randomNumber = randomBall.getRandomNumber();
 
         System.out.println(randomNumber);
 
@@ -15,7 +15,8 @@ public class BaseBall {
         while (true) {
             String restartNumber = Input.readRestartNumber();
             if (restartNumber.equals("1")) {
-                randomNumber = randomBall.generate();
+                randomBall.generate();
+                randomNumber = randomBall.getRandomNumber();
                 System.out.println(randomNumber);
 
                 baseBall.play(randomNumber);
