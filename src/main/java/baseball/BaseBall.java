@@ -1,7 +1,5 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class BaseBall {
 
     public void start() {
@@ -15,15 +13,14 @@ public class BaseBall {
         baseBall.play(randomNumber);
 
         while (true) {
-            Output.printRestartMessage();
-            String restartInput = Console.readLine();
-            if (restartInput.equals("1")) {
+            String restartNumber = Input.readRestartNumber();
+            if (restartNumber.equals("1")) {
                 randomNumber = randomBall.generate();
                 System.out.println(randomNumber);
 
                 baseBall.play(randomNumber);
 
-            } else if (restartInput.equals("2")) {
+            } else if (restartNumber.equals("2")) {
                 break;
             }
         }
@@ -32,8 +29,7 @@ public class BaseBall {
     private void play(String randomNumber) {
         while (true) {
 
-            Input input = new Input();
-            String userInput = input.readNumber();
+            String userInput = Input.readBallNumber();
 
             if (userInput.equals(randomNumber)) {
                 Output.printEndMessage();
