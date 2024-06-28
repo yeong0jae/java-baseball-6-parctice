@@ -1,9 +1,6 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
@@ -11,42 +8,27 @@ public class Application {
         Output output = new Output();
         output.printStartMessage();
 
-        String computerString = randomNumber();
-        System.out.println(computerString);
+        RandomBall randomBall = new RandomBall();
+        String randomNumber = randomBall.generate();
+        
+        System.out.println(randomNumber);
 
-        baseball(computerString);
+        baseball(randomNumber);
 
         while (true) {
             output.printRestartMessage();
             String restartInput = Console.readLine();
             if (restartInput.equals("1")) {
-                computerString = randomNumber();
-                System.out.println(computerString);
+                randomNumber = randomBall.generate();
+                System.out.println(randomNumber);
 
-                baseball(computerString);
+                baseball(randomNumber);
 
             } else if (restartInput.equals("2")) {
                 output.printEndMessage();
                 break;
             }
         }
-    }
-
-    private static String randomNumber() {
-        // 컴퓨터가 세자리 수 선택
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-
-        StringBuilder sb = new StringBuilder();
-        for (int number : computer) {
-            sb.append(number);
-        }
-        return sb.toString();
     }
 
     private static void baseball(String computerString) {
