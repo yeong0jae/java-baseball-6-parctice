@@ -5,26 +5,15 @@ public class BaseBall {
     public void start() {
 
         RandomBall randomBall = new RandomBall();
-        String randomNumber = randomBall.getRandomNumber();
-
-        System.out.println(randomNumber);
+        String randomNumber;
 
         BaseBall baseBall = new BaseBall();
-        baseBall.play(randomNumber);
 
-        while (true) {
-            String restartNumber = Input.readRestartNumber();
-            if (restartNumber.equals("1")) {
-                randomBall.generate();
-                randomNumber = randomBall.getRandomNumber();
-                System.out.println(randomNumber);
-
-                baseBall.play(randomNumber);
-
-            } else if (restartNumber.equals("2")) {
-                break;
-            }
-        }
+        do {
+            randomBall.generate();
+            randomNumber = randomBall.getRandomNumber();
+            baseBall.play(randomNumber);
+        } while (Input.isRestart());
     }
 
     private void play(String randomNumber) {

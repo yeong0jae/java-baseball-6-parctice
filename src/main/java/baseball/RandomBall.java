@@ -7,10 +7,6 @@ import java.util.List;
 public class RandomBall {
     private String randomNumber;
 
-    public RandomBall() {
-        generate();
-    }
-
     public void generate() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
