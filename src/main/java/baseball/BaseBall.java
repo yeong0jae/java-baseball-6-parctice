@@ -10,6 +10,7 @@ public class BaseBall {
         String randomNumber = randomBall.generate();
 
         System.out.println(randomNumber);
+
         BaseBall baseBall = new BaseBall();
         baseBall.play(randomNumber, output);
 
@@ -30,8 +31,10 @@ public class BaseBall {
 
     private void play(String randomNumber, Output output) {
         while (true) {
-            System.out.print("숫자를 입력해주세요 : ");
-            String userInput = Console.readLine();
+
+            Input input = new Input();
+            String userInput = input.readNumber();
+            
             if (userInput.equals(randomNumber)) {
                 output.printEndMessage();
                 break;
