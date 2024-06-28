@@ -13,7 +13,7 @@ public class Application {
 
         System.out.println(randomNumber);
 
-        baseball(randomNumber);
+        baseball(randomNumber, output);
 
         while (true) {
             output.printRestartMessage();
@@ -22,21 +22,20 @@ public class Application {
                 randomNumber = randomBall.generate();
                 System.out.println(randomNumber);
 
-                baseball(randomNumber);
+                baseball(randomNumber, output);
 
             } else if (restartInput.equals("2")) {
-                output.printEndMessage();
                 break;
             }
         }
     }
 
-    private static void baseball(String randomNumber) {
+    private static void baseball(String randomNumber, Output output) {
         while (true) {
             System.out.print("숫자를 입력해주세요 : ");
             String userInput = Console.readLine();
             if (userInput.equals(randomNumber)) {
-                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                output.printEndMessage();
                 break;
             }
             int ballCount = 0;
@@ -64,13 +63,13 @@ public class Application {
             }
             // 스트라이크, 볼 출력
             if (strikeCount == 0 && ballCount == 0) {
-                System.out.println("낫싱");
+                output.printNothingMessage();
             } else if (strikeCount == 0) {
-                System.out.println(ballCount + "볼");
+                output.printBallCount(ballCount);
             } else if (ballCount == 0) {
-                System.out.println(strikeCount + "스트라이크");
+                output.printStrikeCount(strikeCount);
             } else {
-                System.out.println(ballCount + "볼 " + strikeCount + "스트라이크");
+                output.printBallAndStrikeCount(ballCount, strikeCount);
             }
         }
     }
