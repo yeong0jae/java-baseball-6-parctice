@@ -28,29 +28,8 @@ public class BaseBall {
                 break;
             }
 
-            int ballCount = 0;
-            int strikeCount = 0;
-
-            if (userInput.charAt(0) == randomNumber.charAt(0)) {
-                strikeCount += 1;
-            }
-            if (userInput.charAt(0) == randomNumber.charAt(1) || userInput.charAt(0) == randomNumber.charAt(2)) {
-                ballCount += 1;
-            }
-
-            if (userInput.charAt(1) == randomNumber.charAt(1)) {
-                strikeCount += 1;
-            }
-            if (userInput.charAt(1) == randomNumber.charAt(0) || userInput.charAt(1) == randomNumber.charAt(2)) {
-                ballCount += 1;
-            }
-
-            if (userInput.charAt(2) == randomNumber.charAt(2)) {
-                strikeCount += 1;
-            }
-            if (userInput.charAt(2) == randomNumber.charAt(0) || userInput.charAt(2) == randomNumber.charAt(1)) {
-                ballCount += 1;
-            }
+            int strikeCount = countStrike(userInput, randomNumber);
+            int ballCount = countBall(userInput, randomNumber);
 
             if (strikeCount == 0 && ballCount == 0) {
                 Output.printNothingMessage();
@@ -62,6 +41,30 @@ public class BaseBall {
                 Output.printBallAndStrikeCount(ballCount, strikeCount);
             }
         }
+    }
+
+    private int countStrike(String userInput, String randomNumber) {
+        int strikeCount = 0;
+        for (int i = 0; i < 3; i++) {
+            if (userInput.charAt(i) == randomNumber.charAt(i)) {
+                strikeCount += 1;
+            }
+        }
+        return strikeCount;
+    }
+
+    private int countBall(String userInput, String randomNumber) {
+        int ballCount = 0;
+        if (userInput.charAt(0) == randomNumber.charAt(1) || userInput.charAt(0) == randomNumber.charAt(2)) {
+            ballCount += 1;
+        }
+        if (userInput.charAt(1) == randomNumber.charAt(0) || userInput.charAt(1) == randomNumber.charAt(2)) {
+            ballCount += 1;
+        }
+        if (userInput.charAt(2) == randomNumber.charAt(0) || userInput.charAt(2) == randomNumber.charAt(1)) {
+            ballCount += 1;
+        }
+        return ballCount;
     }
 
 
