@@ -21,6 +21,7 @@ public class BaseBall {
             String userInput = Input.readBallNumber();
 
             if (userInput.equals(randomNumber)) {
+                Output.printStrikeCount(3);
                 Output.printEndMessage();
                 break;
             }
