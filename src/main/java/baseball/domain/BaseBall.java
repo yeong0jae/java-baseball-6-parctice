@@ -18,17 +18,16 @@ public class BaseBall {
 
     private void play() {
         while (true) {
-
             String userInput = Input.readNumber();
-
-            if (userInput.equals(randomNumber)) {
-                Output.printStrikeCount(3);
-                Output.printEndMessage();
-                break;
-            }
 
             int strikeCount = Counter.countStrike(userInput, randomNumber);
             int ballCount = Counter.countBall(userInput, randomNumber);
+
+            if (strikeCount == 3) {
+                Output.printStrikeCount(strikeCount);
+                Output.printEndMessage();
+                break;
+            }
 
             if (strikeCount == 0 && ballCount == 0) {
                 Output.printNothingMessage();
