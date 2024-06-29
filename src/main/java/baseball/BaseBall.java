@@ -18,7 +18,7 @@ public class BaseBall {
     private void play(String randomNumber) {
         while (true) {
 
-            String userInput = Input.readBallNumber();
+            String userInput = Input.readNumber();
 
             if (userInput.equals(randomNumber)) {
                 Output.printStrikeCount(3);
