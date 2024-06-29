@@ -9,8 +9,7 @@ public class BaseBall {
         String randomNumber;
 
         do {
-            randomBall.generate();
-            randomNumber = randomBall.getNumber();
+            randomNumber = randomBall.generate();
             play(randomNumber);
         } while (Input.isRestart());
     }
