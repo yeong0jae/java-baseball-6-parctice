@@ -15,13 +15,15 @@ public class RandomBall {
                 computer.add(randomNumber);
             }
         }
+        this.randomNumber = listToString(computer);
+    }
 
+    private String listToString(List<Integer> computer) {
         StringBuilder sb = new StringBuilder();
         for (int number : computer) {
             sb.append(number);
         }
-
-        this.randomNumber = sb.toString();
+        return sb.toString();
     }
 
     public String getRandomNumber() {
