@@ -8,11 +8,10 @@ public class BaseBall {
     public void start() {
         Output.printStartMessage();
 
-        RandomBall randomBall = new RandomBall();
         String randomNumber;
 
         do {
-            randomNumber = randomBall.generate();
+            randomNumber = RandomBall.generate();
             play(randomNumber);
         } while (Input.isRestart());
     }

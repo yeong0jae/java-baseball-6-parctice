@@ -6,7 +6,7 @@ import java.util.List;
 
 public class RandomBall {
 
-    public String generate() {
+    public static String generate() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -17,7 +17,7 @@ public class RandomBall {
         return listToString(computer);
     }
 
-    private String listToString(List<Integer> computer) {
+    private static String listToString(List<Integer> computer) {
         StringBuilder sb = new StringBuilder();
         for (int number : computer) {
             sb.append(number);
