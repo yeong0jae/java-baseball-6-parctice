@@ -5,18 +5,18 @@ import baseball.view.Output;
 
 public class BaseBall {
 
+    private String randomNumber;
+
     public void start() {
         Output.printStartMessage();
 
-        String randomNumber;
-
         do {
-            randomNumber = RandomBall.generate();
-            play(randomNumber);
+            this.randomNumber = RandomBall.generate();
+            play();
         } while (Input.isRestart());
     }
 
-    private void play(String randomNumber) {
+    private void play() {
         while (true) {
 
             String userInput = Input.readNumber();
