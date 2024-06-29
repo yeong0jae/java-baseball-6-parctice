@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomBall {
-    private String randomNumber;
+    private String number;
 
     public void generate() {
         List<Integer> computer = new ArrayList<>();
@@ -15,7 +15,7 @@ public class RandomBall {
                 computer.add(randomNumber);
             }
         }
-        this.randomNumber = listToString(computer);
+        this.number = listToString(computer);
     }
 
     private String listToString(List<Integer> computer) {
@@ -26,7 +26,7 @@ public class RandomBall {
         return sb.toString();
     }
 
-    public String getRandomNumber() {
-        return randomNumber;
+    public String getNumber() {
+        return number;
     }
 }

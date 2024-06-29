@@ -10,7 +10,7 @@ public class BaseBall {
 
         do {
             randomBall.generate();
-            randomNumber = randomBall.getRandomNumber();
+            randomNumber = randomBall.getNumber();
             play(randomNumber);
         } while (Input.isRestart());
     }
