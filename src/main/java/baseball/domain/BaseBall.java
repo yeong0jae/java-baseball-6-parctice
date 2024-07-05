@@ -5,23 +5,23 @@ import baseball.view.Output;
 
 public class BaseBall {
 
-    private String randomNumber;
-
     public void start() {
         Output.printStartMessage();
 
         do {
-            this.randomNumber = RandomBall.generate();
-            play();
+            Balls randomBalls = new Balls();
+            System.out.println(randomBalls.getBalls());
+            play(randomBalls);
         } while (Input.isRestart());
     }
 
-    private void play() {
+    private void play(Balls randomBalls) {
         while (true) {
             String userInput = Input.readNumber();
+            Balls inputBalls = new Balls(userInput);
 
-            int strikeCount = Counter.countStrike(userInput, randomNumber);
-            int ballCount = Counter.countBall(userInput, randomNumber);
+            int strikeCount = Counter.countStrike(inputBalls.getBalls(), randomBalls.getBalls());
+            int ballCount = Counter.countBall(inputBalls.getBalls(), randomBalls.getBalls());
 
             if (strikeCount == 3) {
                 Output.printStrikeCount(strikeCount);
