@@ -22,8 +22,8 @@ public class Balls {
     }
 
     public Balls(String inputBalls) {
-        // TODO validate 추가 필요
         validateSize(inputBalls);
+        validateNumeric(inputBalls);
         List<Integer> balls = new ArrayList<>();
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             int inputBall = inputBalls.charAt(i) - '0';
@@ -39,6 +39,14 @@ public class Balls {
     private void validateSize(String inputBalls) {
         if (inputBalls.length() != NUMBER_LENGTH) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateNumeric(String inputBalls) {
+        for (char inputBall : inputBalls.toCharArray()) {
+            if (!Character.isDigit(inputBall)) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 }
