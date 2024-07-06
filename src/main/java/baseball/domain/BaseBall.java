@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import baseball.model.Balls;
 import baseball.view.Input;
 import baseball.view.Output;
 
@@ -10,7 +11,6 @@ public class BaseBall {
 
         do {
             Balls randomBalls = new Balls();
-            System.out.println(randomBalls.getBalls());
             play(randomBalls);
         } while (Input.isRestart());
     }
@@ -40,6 +40,4 @@ public class BaseBall {
             }
         }
     }
-
-
 }

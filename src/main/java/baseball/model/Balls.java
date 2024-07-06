@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.model;
 
 import static baseball.utils.Constants.NUMBER_LENGTH;
 
