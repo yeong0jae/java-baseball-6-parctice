@@ -22,9 +22,7 @@ public class Balls {
     }
 
     public Balls(String inputBalls) {
-        validateSize(inputBalls);
-        validateNumeric(inputBalls);
-        validateDuplicate(inputBalls);
+        validateBalls(inputBalls);
         List<Integer> balls = new ArrayList<>();
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             int inputBall = inputBalls.charAt(i) - '0';
@@ -37,13 +35,26 @@ public class Balls {
         return balls;
     }
 
-    private void validateSize(String inputBalls) {
+    private void validateBalls(String inputBalls) {
+        isNull(inputBalls);
+        isLengthThree(inputBalls);
+        isNumeric(inputBalls);
+        hasDuplicates(inputBalls);
+    }
+
+    private void isNull(String inputBalls) {
+        if (inputBalls == null) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void isLengthThree(String inputBalls) {
         if (inputBalls.length() != NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateNumeric(String inputBalls) {
+    private void isNumeric(String inputBalls) {
         for (char inputBall : inputBalls.toCharArray()) {
             if (!Character.isDigit(inputBall)) {
                 throw new IllegalArgumentException();
@@ -51,7 +62,7 @@ public class Balls {
         }
     }
 
-    private void validateDuplicate(String inputBalls) {
+    private void hasDuplicates(String inputBalls) {
         if (inputBalls.charAt(0) == inputBalls.charAt(1)) {
             throw new IllegalArgumentException();
         }
