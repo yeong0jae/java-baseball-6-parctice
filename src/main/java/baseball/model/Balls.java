@@ -24,6 +24,7 @@ public class Balls {
     public Balls(String inputBalls) {
         validateSize(inputBalls);
         validateNumeric(inputBalls);
+        validateDuplicate(inputBalls);
         List<Integer> balls = new ArrayList<>();
         for (int i = 0; i < NUMBER_LENGTH; i++) {
             int inputBall = inputBalls.charAt(i) - '0';
@@ -49,4 +50,17 @@ public class Balls {
             }
         }
     }
+
+    private void validateDuplicate(String inputBalls) {
+        if (inputBalls.charAt(0) == inputBalls.charAt(1)) {
+            throw new IllegalArgumentException();
+        }
+        if (inputBalls.charAt(0) == inputBalls.charAt(2)) {
+            throw new IllegalArgumentException();
+        }
+        if (inputBalls.charAt(1) == inputBalls.charAt(2)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
