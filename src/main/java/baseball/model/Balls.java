@@ -49,7 +49,7 @@ public class Balls {
 
     private void isLengthThree(String inputBalls) {
         if (inputBalls.length() != NUMBER_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("입력한 값의 길이가 3이 아닙니다.");
         }
     }
 

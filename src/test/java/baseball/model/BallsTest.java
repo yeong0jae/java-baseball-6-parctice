@@ -1,6 +1,7 @@
 package baseball.model;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -43,5 +44,18 @@ public class BallsTest {
         assertThat(balls.getBalls().get(0)).isEqualTo(1);
         assertThat(balls.getBalls().get(1)).isEqualTo(2);
         assertThat(balls.getBalls().get(2)).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("유저가 입력한 문자열의 길이가 3이 아니면 예외를 발생시킨다.")
+    void isLengthThreeTest() {
+        //given
+        String inputBalls = "1234";
+
+        //when
+        //then
+        assertThatThrownBy(() -> new Balls(inputBalls))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("입력한 값의 길이가 3이 아닙니다.");
     }
 }
