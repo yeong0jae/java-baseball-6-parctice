@@ -1,5 +1,6 @@
 package baseball.model;
 
+import static baseball.utils.ExceptionMessage.LENGTH_EXCEPTION_MESSAGE;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
@@ -56,6 +57,6 @@ public class BallsTest {
         //then
         assertThatThrownBy(() -> new Balls(inputBalls))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("입력한 값의 길이가 3이 아닙니다.");
+                .hasMessageContaining(LENGTH_EXCEPTION_MESSAGE);
     }
 }
