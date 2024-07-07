@@ -9,9 +9,8 @@ public class Balls {
 
     private final List<Integer> balls;
 
-    public Balls() {
+    public Balls(NumberGenerator numberGenerator) {
         List<Integer> balls = new ArrayList<>();
-        NumberGenerator numberGenerator = new NumberGeneratorImpl();
         while (balls.size() < 3) {
             int randomNumber = numberGenerator.pickNumberInRange(1, 9);
             if (!balls.contains(randomNumber)) {

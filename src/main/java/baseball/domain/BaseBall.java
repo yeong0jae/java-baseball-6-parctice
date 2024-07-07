@@ -1,6 +1,8 @@
 package baseball.domain;
 
 import baseball.model.Balls;
+import baseball.model.NumberGenerator;
+import baseball.model.NumberGeneratorImpl;
 import baseball.view.Input;
 import baseball.view.Output;
 
@@ -8,9 +10,10 @@ public class BaseBall {
 
     public void start() {
         Output.printStartMessage();
+        NumberGenerator numberGenerator = new NumberGeneratorImpl();
 
         do {
-            Balls randomBalls = new Balls();
+            Balls randomBalls = new Balls(numberGenerator);
             play(randomBalls);
         } while (Input.isRestart());
     }
